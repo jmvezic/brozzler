@@ -204,6 +204,12 @@
   default_parameters:
     actions:
       - selector: img#navForward1
+- # guardian
+  url_regex: '^https?://(?:www\.)?theguardian\.com/.*$'
+  behavior_js_template: umbraBehavior.js.j2
+  default_parameters:
+    actions:
+      - selector: span.inline-play.inline-audio-player, button.sc-button-play, .playButton, div.soundItem, .jwlist>a, audio, video
 - # default fallback behavior
   url_regex: '^.*$'
   behavior_js_template: umbraBehavior.js.j2
