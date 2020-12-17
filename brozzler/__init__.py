@@ -94,27 +94,29 @@ def _logging_handler_handle(self, record):
 logging.Handler.handle = _logging_handler_handle
 
 _behaviors = None
-def behaviors(behaviors_dir=None):
+def behaviors(behaviors_dir=None, conf='behaviors.yaml'):
     """Return list of JS behaviors loaded from YAML file.
 
     :param behaviors_dir: Directory containing `behaviors.yaml` and
     `js-templates/`. Defaults to brozzler dir.
+    :param conf: The YAML definition of behaviors, it could also be
+    `login-behaviors.yaml` to load login action behaviors.
     """
     import os, yaml, string
     global _behaviors
     if _behaviors is None:
         d = behaviors_dir or os.path.dirname(__file__)
-        behaviors_yaml = os.path.join(d, 'behaviors.yaml')
+        behaviors_yaml = os.path.join(d, conf)
         with open(behaviors_yaml) as fin:
             _behaviors = yaml.safe_load(fin)
     return _behaviors
 
-def behavior_script(url, template_parameters=None, behaviors_dir=None):
+def behavior_script(url, template_parameters=None, behaviors_dir=None, behaviors=None):
     '''
     Returns the javascript behavior string populated with template_parameters.
     '''
     import re, logging, json
-    for behavior in behaviors(behaviors_dir=behaviors_dir):
+    for behavior in behaviors:
         if re.match(behavior['url_regex'], url):
             parameters = dict()
             if 'default_parameters' in behavior:
