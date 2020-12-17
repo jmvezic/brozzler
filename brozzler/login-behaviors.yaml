@@ -14,3 +14,10 @@
   default_parameters:
     actions:
       - selector: a[href~='https://login.thetimes.co.uk']
+-
+  url_regex: '^https?://(?:www\.)?instagram\.com/.*$'
+  behavior_js_template: login-page.js.j2
+  request_idle_timeout_sec: 10
+  default_parameters:
+    actions:
+      - selector: a[href~='/accounts/login?next']
