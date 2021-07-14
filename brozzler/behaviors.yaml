@@ -1,7 +1,7 @@
 #
 # brozzler/behaviors.yaml - behavior configuration
 #
-# Copyright (C) 2014-2020 Internet Archive
+# Copyright (C) 2014-2021 Internet Archive
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@
       - selector: a[rel="theater"], a[id="expanding_cta_close_button"]
         closeSelector: 'a._xlt'
 - # https://webarchive.jira.com/browse/WT-55
-  url_regex: '^^https?://([^.]*\.)*fbcdn\.net/.*$'
+  url_regex: '^https?://([^.]*\.)*fbcdn\.net/.*$'
   behavior_js_template: umbraBehavior.js.j2
   request_idle_timeout_sec: 30
   default_parameters:
