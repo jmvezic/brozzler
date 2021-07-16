@@ -165,6 +165,7 @@ class Chrome:
         new_env['HOME'] = self._home_tmpdir.name
         chrome_args = [
                 self.chrome_exe,
+                '--headless',
                 '--remote-debugging-port=%s' % self.port,
                 '--use-mock-keychain', # mac thing
                 '--user-data-dir=%s' % self._chrome_user_data_dir,
@@ -172,11 +173,11 @@ class Chrome:
                 '--disable-renderer-backgrounding', '--disable-hang-monitor',
                 '--disable-background-timer-throttling', '--mute-audio',
                 '--disable-web-sockets',
-                '--window-size=1100,900', '--no-default-browser-check',
+                '--window-size=1280,720', '--no-default-browser-check',
                 '--disable-first-run-ui', '--no-first-run',
                 '--homepage=about:blank', '--disable-direct-npapi-requests',
                 '--disable-web-security', '--disable-notifications',
-                '--disable-extensions', '--disable-save-password-bubble']
+                '--disable-save-password-bubble']
 
         extra_chrome_args = os.environ.get('BROZZLER_EXTRA_CHROME_ARGS')
         if extra_chrome_args:
